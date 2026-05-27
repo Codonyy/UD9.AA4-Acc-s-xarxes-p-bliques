@@ -116,13 +116,19 @@ Dins de **Servicios, OpenVPN** marca l’opció **Activado**.
 * **d) (Opcional però recomanable) Editar el fitxer hosts de Windows:** Per permetre la resolució DNS del nom **ipfire.foodlogistic.test** (que apareix dins del `.ovpn`), editem el fitxer `C:\Windows\System32\drivers\etc\hosts` com a **administrador**. Afegim la línia:
 `192.169.2.254 ipfire.foodlogistic.test`
 
+<img width="759" height="517" alt="Captura de pantalla 2026-05-27 183819" src="https://github.com/user-attachments/assets/d4c2e17d-405a-494d-91e3-ab62e7f6bdb9" />
+
 ### 3.6 Connectar la VPN
 
 Fes clic dret a la icona d’**OpenVPN GUI** i selecciona **Conectar**. Et demanarà la contrasenya **PKCS12** si és que la vas posar en crear l’usuari.
 
+<img width="593" height="393" alt="13" src="https://github.com/user-attachments/assets/a29b151a-d593-4aa0-a0b9-3410657a6b19" />
+
 ### 3.7 Comprovar des del servidor IPFire
 
 A l’IPFire, a **OpenVPN → Control y estado de conexión** veuràs l’usuari **Serveis2** amb estat **CONECTADO**.
+
+<img width="834" height="179" alt="14" src="https://github.com/user-attachments/assets/0c079ccd-3159-4abb-87ab-fc17587d733e" />
 
 ### 3.8 Accedir a la web a través de la VPN
 
