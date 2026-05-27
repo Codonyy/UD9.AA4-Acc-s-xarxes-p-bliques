@@ -1,7 +1,4 @@
 
-Aquí tens tota la guia completa unificada i estructurada correctament en format Markdown:
-
-```markdown
 # Guia pràctica: Configuració de DNAT i VPN (Roadwarrior) amb IPFire
 
 ## Escenari:
@@ -15,17 +12,11 @@ Aquí tens tota la guia completa unificada i estructurada correctament en format
 
 Al Zorin instal·lem els serveis SSH i Apache. Obre un terminal i executa:
 
-```bash
 sudo apt update && sudo apt install apache2 openssh-server
-
-```
 
 Un cop instal·lat, editem la pàgina web per defecte perquè mostri un missatge personalitzat:
 
-```bash
 sudo nano /var/www/html/index.html
-
-```
 
 ---
 
