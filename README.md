@@ -1,4 +1,5 @@
 
+
 # Guia pràctica: Configuració de DNAT i VPN (Roadwarrior) amb IPFire
 
 ## Escenari
@@ -14,9 +15,15 @@ Al Zorin instal·lem els serveis SSH i Apache. Obre un terminal i executa:
 
 sudo apt update && sudo apt install apache2 openssh-server
 
+<img width="732" height="560" alt="2" src="https://github.com/user-attachments/assets/06cca376-b7b1-4a0a-b771-61eed72b773e" />
+
 Un cop instal·lat, editem la pàgina web per defecte perquè mostri un missatge personalitzat:
 
 sudo nano /var/www/html/index.html
+
+<img width="652" height="474" alt="1" src="https://github.com/user-attachments/assets/3e0d447f-f8d1-4985-89ee-bf005d72b98b" />
+
+<img width="593" height="348" alt="3" src="https://github.com/user-attachments/assets/fae917ae-857d-4a47-a4af-09b62d20d69d" />
 
 ---
 
@@ -28,10 +35,14 @@ Volem que el client Windows (xarxa RED) pugui veure la web del Zorin posant la I
 
 Accedeix a l’entorn gràfic d’IPFire. Ves a **Firewall → Reglas de cortafuegos** i fes clic a **Agregar**. Omple els camps:
 
+<img width="895" height="163" alt="4" src="https://github.com/user-attachments/assets/58fdaed2-1683-43f9-b139-88014a09c608" />
+
 * **Origen:**
 * Direcció d’origen: Todos
 * Xarxes estàndard: RED
 
+<img width="941" height="613" alt="5" src="https://github.com/user-attachments/assets/3ff014dd-8ae2-4a76-b1d6-de1bf7e83540" />
+<img width="956" height="686" alt="6" src="https://github.com/user-attachments/assets/9ec30db0-ad79-4b51-b402-5176c960816d" />
 
 * **NAT:** Marca **Usar traducción de direcciones de red (NAT)** i selecciona **NAT de destino (DNAT – reenvío de puertos)**.
 * **Destí:**
@@ -69,9 +80,9 @@ Com que és la primera vegada, apareixerà un botó **Generate Root/Host Certifi
 
 ### 3.2 Afegir l’usuari Roadwarrior
 
-A la pestanya **Control y estado de conexión** fes clic a **Agregar**.
+A la pestanya **Control y estado de conexión** fes clic a **Agregar**.Selecciona Tipo de conexión: **Red privada virtual VPN Host-to-Net (Roadwarrior)** i torna a clicar **Agregar**. A la configuració, conexió, Activat: marca ✓
 
-Selecciona Tipo de conexión: **Red privada virtual VPN Host-to-Net (Roadwarrior)** i torna a clicar **Agregar**. A la configuració, conexió, Activat: marca ✓
+<img width="949" height="687" alt="7" src="https://github.com/user-attachments/assets/c2365d3f-c0ab-4155-bcf7-a4ce9569abd1" />
 
 ### 3.3 Exportar els fitxers del client
 
@@ -82,15 +93,26 @@ Un cop creat l’usuari, l’IPFire generarà dos fitxers:
 
 Descarrega’ls, aquests els hauràs de passar a la VM client extern (windows), per tant pots usar serveis com Google Drive o webs que et generin un enllaç de descàrrega a partir de fitxers com FileMail.
 
+<img width="795" height="169" alt="8" src="https://github.com/user-attachments/assets/e652b784-3f35-4733-ae3c-174b53a8e33f" />
+<img width="560" height="316" alt="9" src="https://github.com/user-attachments/assets/934bf70b-c631-42f2-a1d6-79cba5be5f9c" />
+
 ### 3.4 Habilitar el servei
 
 Dins de **Servicios, OpenVPN** marca l’opció **Activado**.
+
+<img width="938" height="441" alt="10" src="https://github.com/user-attachments/assets/45eed065-2478-44f4-a883-ac44f19326b6" />
 
 ### 3.5 Preparar el client Windows
 
 * **a) Instal·lar OpenVPN GUI:** Descarrega e instal·la la **OpenVPN GUI** des del web oficial.
 * **b) Editar l’arxiu .ovpn (molt important):** Obre l’arxiu `.ovpn` amb el Bloc de notes. Busca la línia que comença per `remote` i canvia la IP per la IP de l’adaptador RED del teu IPFire. Guarda els canvis.
+
+<img width="780" height="530" alt="11" src="https://github.com/user-attachments/assets/728b0807-0bc9-4e4b-9d3d-06d8aeaf9886" />
+
 * **c) Crear la carpeta de configuració:** **Fes clic dret** sobre el icono de OpenVPN, fes clic a **Import files**, selecciona el fitxer `.ovpn`. Es crearà una nova carpeta al directori amb l’arxiu dins `C:\Users\usuari\OpenVPN\config`. Copia el `.p12` aquí dins també.
+
+<img width="790" height="600" alt="12" src="https://github.com/user-attachments/assets/34bc941b-b46f-4786-8739-2b78c675f109" />
+
 * **d) (Opcional però recomanable) Editar el fitxer hosts de Windows:** Per permetre la resolució DNS del nom **ipfire.foodlogistic.test** (que apareix dins del `.ovpn`), editem el fitxer `C:\Windows\System32\drivers\etc\hosts` com a **administrador**. Afegim la línia:
 `192.169.2.254 ipfire.foodlogistic.test`
 
